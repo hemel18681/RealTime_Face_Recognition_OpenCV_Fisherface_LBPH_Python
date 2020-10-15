@@ -60,6 +60,8 @@ while True:
                 print("Unknown Person")
                 cv2.imwrite("input.jpg",im)
                 cnt = 0;
+    cv2.imshow('OpenCV',im)
+    key = cv2.waitKey(10)
 
 webcam.release()
 cv2.destroyAllWindows()
