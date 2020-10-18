@@ -2,6 +2,7 @@
 
 do it first ->
 
-1.try object detection
-2.try face detection
-3.try color calibration on rgb to hsv
+1. try object detection
+2. try face detection
+3. try color calibration on rgb to hsv
+4. try save images using OpenCV
