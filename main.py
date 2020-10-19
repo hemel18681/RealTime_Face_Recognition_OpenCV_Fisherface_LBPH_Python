@@ -11,12 +11,12 @@
 import cv2
 import numpy # array based work
 import os #path
-haar_file = 'haarcascade_frontalface_default.xml'
-face_cascade = cv2.CascadeClassifier(haar_file)
-datasets = 'dataset'
+haar_file = 'haarcascade_frontalface_default.xml' #algorithm file 
+face_cascade = cv2.CascadeClassifier(haar_file) #generate algorithm file
+datasets = 'dataset' 
 (images, labels, names, id) = ([],[],{},0)
 
-for (subdirs, dirs, files) in os.walk(datasets):
+for (subdirs, dirs, files) in os.walk(datasets): #walking on dataset
     for subdir in dirs:
         names[id] = subdir
         subjectpath = os.path.join(datasets,subdir)
