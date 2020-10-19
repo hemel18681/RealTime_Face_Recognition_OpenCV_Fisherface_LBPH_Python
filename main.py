@@ -14,7 +14,7 @@ import os #path
 haar_file = 'haarcascade_frontalface_default.xml' #algorithm file 
 face_cascade = cv2.CascadeClassifier(haar_file) #generate algorithm file
 datasets = 'dataset' 
-(images, labels, names, id) = ([],[],{},0)
+(images, labels, names, id) = ([],[],{},0) #image array for collecting image
 
 for (subdirs, dirs, files) in os.walk(datasets): #walking on dataset
     for subdir in dirs:
@@ -31,9 +31,9 @@ for (subdirs, dirs, files) in os.walk(datasets): #walking on dataset
 (images,labels) = [numpy.array(lis) for lis in [images,labels]]
 print(images,labels)
 
-model = cv2.face.LBPHFaceRecognizer_create()
+model = cv2.face.LBPHFaceRecognizer_create() #initialize recognition algorithm
 #model = cv2.face.FisherFaceRecognizer_create()
-model.train(images,labels)
+model.train(images,labels) #train algorithm on images
 print("Training Completed")
 
 webcam = cv2.VideoCapture(0)
