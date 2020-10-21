@@ -41,13 +41,13 @@ cnt = 0
 while True:
     (_,im) = webcam.read()
     gray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray,1.3,5)
-    for (x,y,w,h) in faces:
+    faces = face_cascade.detectMultiScale(gray,1.3,5) #initialize algorithm
+    for (x,y,w,h) in faces: #cheak face
         cv2.rectangle(im,(x,y),(x+w,y+h),(255,255,0),2)
         face = gray[y:y+h, x:x+w]
         face_resize = cv2.resize(face,(width,height))
 
-        prediction = model.predict(face_resize)
+        prediction = model.predict(face_resize) #predice the face
         cv2.rectangle(im,(x,y),(x+w,y+h),(0,255,0),3)
         if prediction[1]<800:
             cv2.putText(im,'%s - %f.0f'% (names[prediction[0]],prediction[1]),(x-10,y-10),cv2.FONT_HERSHEY_PLAIN,2 ,(0,0,255))
