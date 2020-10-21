@@ -47,20 +47,20 @@ while True:
         face = gray[y:y+h, x:x+w]
         face_resize = cv2.resize(face,(width,height))
 
-        prediction = model.predict(face_resize) #predice the face
+        prediction = model.predict(face_resize) #predicet the face
         cv2.rectangle(im,(x,y),(x+w,y+h),(0,255,0),3)
-        if prediction[1]<800:
+        if prediction[1]<800: #cheaking prediction
             cv2.putText(im,'%s - %f.0f'% (names[prediction[0]],prediction[1]),(x-10,y-10),cv2.FONT_HERSHEY_PLAIN,2 ,(0,0,255))
-            print(names[prediction[0]])
+            print(names[prediction[0]]) #print the name
             cnt = 0
         else:
             cnt+=1
-            cv2.putText(im,'Unknown',(x-10,y-10),cv2.FONT_HERSHEY_PLAIN,1,(255,0,0))
+            cv2.putText(im,'Unknown',(x-10,y-10),cv2.FONT_HERSHEY_PLAIN,1,(255,0,0)) #not able to predict
             if cnt>100:
                 print("Unknown Person")
                 cv2.imwrite("input.jpg",im)
                 cnt = 0;
-    cv2.imshow('OpenCV',im)
+    cv2.imshow('OpenCV',im) #display
     key = cv2.waitKey(10)
     if key == 27:
         break
